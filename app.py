@@ -12,7 +12,7 @@ font-family:monospace;
 background:#fff;
 color:#000;
 font-size:12px;
-line-height:1.25;
+line-height:1.3;
 ">
 
 <div style="font-size:10px;">
@@ -22,13 +22,13 @@ Reg3.3 - (02002078)<br>
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:5px;">
 <div>
-<div style="font-size:18px;font-weight:bold;">ferizy</div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Ferizy_logo.png/320px-Ferizy_logo.png" width="80">
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
 
 <div style="text-align:center;">
 <div style="font-weight:bold;">BOARDING PASS</div>
-<div style="font-size:11px;">Untuk Kendaraan</div>
+<div style="font-weight:bold;font-size:11px;">Untuk Kendaraan</div>
 </div>
 
 <div style="font-size:20px;font-weight:bold;">B</div>
@@ -42,16 +42,18 @@ Reg3.3 - (02002078)<br>
 <div>Reguler {data['Waktu Check-In'][:10]}</div>
 </div>
 
-<div style="margin-top:6px;">
-<div>BERLAKU : {data['Waktu Check-In']}</div>
-<div>KD. BOOKING : {data['No Tiket'][:8]}</div>
-<div>NO. TIKET : {data['No Tiket']}</div>
-<div>NAMA : {data['Nama']}</div>
-<div>NO. POLISI : {data['No Polisi']}</div>
-<div>GOLONGAN : {data['Golongan']}</div>
-<div>BERAT : {data['Berat']} KG</div>
-<div>TARIF : {data['Tarif']}</div>
-</div>
+<hr style="border-top:1px dashed #000;margin:6px 0;">
+
+<table style="width:100%;font-size:12px;">
+<tr><td style="width:40%;">BERLAKU</td><td>: {data['Waktu Check-In']}</td></tr>
+<tr><td>KD. BOOKING</td><td>: {data['No Tiket'][:8]}</td></tr>
+<tr><td>NO. TIKET</td><td>: {data['No Tiket']}</td></tr>
+<tr><td>NAMA</td><td>: {data['Nama']}</td></tr>
+<tr><td>NO. POLISI</td><td>: {data['No Polisi']}</td></tr>
+<tr><td>GOLONGAN</td><td>: {data['Golongan']}</td></tr>
+<tr><td>BERAT</td><td>: {data['Berat']} KG</td></tr>
+<tr><td>TARIF</td><td>: {data['Tarif']}</td></tr>
+</table>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
@@ -83,7 +85,7 @@ www.ferizy.com
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="text-align:center;font-size:9px;">
-PT. ASDP Indonesia Ferry (Persero)<br>
+<b>PT. ASDP Indonesia Ferry (Persero)</b><br>
 Jl. Jend. Ahmad Yani Kav 52 A, Cempaka Putih Timur<br>
 Kota Jakarta Pusat, 10510<br>
 NPWP : 01.061.041.8-093.000
@@ -109,7 +111,7 @@ function downloadImage() {{
 }}
 </script>
 """
-    st.components.v1.html(html_template, height=650)
+    st.components.v1.html(html_template, height=700)
     
 st.title("⛴️ Generator Boarding Pass Ferizy")
 
