@@ -39,7 +39,12 @@ Reg3.3 - (02002078)<br>
     </div>
 </div>
 
-<div style="font-size:20px;font-weight:bold;">B</div>
+<div style="
+font-weight:900;
+font-size:36px;
+line-height:1;
+">
+B
 </div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
