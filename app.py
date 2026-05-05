@@ -4,84 +4,92 @@ import pandas as pd
 st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered")
 
 def render_boarding_pass(data):
-    """Fungsi untuk me-render data ke dalam format HTML/CSS Struk"""
     html_template = f"""
-<div style="width: 380px; padding: 25px; margin: 20px auto; border: 1px solid #ccc; font-family: monospace; background-color: #fcfcfc; color: #000; box-shadow: 0px 4px 10px rgba(0,0,0,0.1);">
-<div style="display: flex; justify-content: space-between; align-items: center;">
-<div style="font-weight: 900; font-size: 24px; font-family: sans-serif; font-style: italic;">ferizy</div>
-<div style="text-align: center; font-size: 13px; font-weight: bold; font-family: sans-serif;">BOARDING PASS<br>Untuk Pengguna Jasa</div>
-<div style="font-size: 32px; font-weight: bold; font-family: sans-serif;">B</div>
+<div id="ticket" style="width:280px;padding:12px;margin:auto;
+font-family:monospace;background:#fff;color:#000;
+font-size:12px;line-height:1.2;letter-spacing:0.3px;">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<div style="font-weight:bold;font-size:16px;">ferizy</div>
+<div style="text-align:center;font-size:10px;">
+<b>BOARDING PASS</b><br>Untuk Pengguna Jasa
+</div>
+<div style="font-size:18px;font-weight:bold;">B</div>
 </div>
 
-<hr style="border: none; border-top: 1px dashed #333; margin: 15px 0;">
+<hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="display: flex; justify-content: space-between; font-size: 14px; text-align: center;">
-<div style="width: 40%; text-align: left;">ASAL<br><b style="font-size: 16px; font-family: sans-serif;">{data['Asal']}</b></div>
-<div style="width: 20%; font-size: 20px; line-height: 2;">&#10142;</div>
-<div style="width: 40%; text-align: right;">TUJUAN<br><b style="font-size: 16px; font-family: sans-serif;">{data['Tujuan']}</b></div>
+<div style="display:flex;justify-content:space-between;">
+<div>ASAL<br><b>{data['Asal']}</b></div>
+<div>→</div>
+<div style="text-align:right;">TUJUAN<br><b>{data['Tujuan']}</b></div>
 </div>
 
-<hr style="border: none; border-top: 1px dashed #333; margin: 15px 0;">
+<hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<table style="width: 100%; font-size: 12px; text-align: center; border-collapse: collapse; font-family: sans-serif;">
+<table style="width:100%;text-align:center;font-size:11px;">
 <tr>
-<td>Kelas Layanan<br><b style="font-size: 14px;">{data['Kelas Layanan']}</b></td>
-<td>Golongan<br><b style="font-size: 14px;">{data['Golongan']}</b></td>
-<td>Total PNP<br><b style="font-size: 14px;">{data['Total PNP']}</b></td>
-<td>Dermaga<br><b style="font-size: 14px;">{data['Dermaga']}</b></td>
+<td>Kelas<br><b>{data['Kelas Layanan']}</b></td>
+<td>Gol<br><b>{data['Golongan']}</b></td>
+<td>PNP<br><b>{data['Total PNP']}</b></td>
+<td>Derm<br><b>{data['Dermaga']}</b></td>
 </tr>
 </table>
 
-<div style="font-size: 11px; text-align: center; margin-top: 12px; font-style: italic; color: #444;">
-Silakan cek informasi dermaga di pelabuhan dan ikuti arahan petugas untuk menuju ke arah dermaga
+<div style="font-size:9px;text-align:center;margin:4px 0;">
+Cek info dermaga di pelabuhan
 </div>
 
-<br>
+<hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="position: relative;">
-<div style="position: absolute; top: 15%; left: 10%; font-size: 60px; font-weight: bold; color: rgba(200, 200, 200, 0.2); z-index: 0; font-family: sans-serif; letter-spacing: 5px;">
-{data['Kelas Layanan']}
-</div>
-<table style="width: 100%; font-size: 14px; text-align: left; line-height: 1.6; position: relative; z-index: 1;">
-<tr><td style="width: 45%;">WAKTU CHECK-IN</td><td>: {data['Waktu Check-In']}</td></tr>
-<tr><td>NO. TIKET</td><td>: {data['No Tiket']}</td></tr>
-<tr><td>NAMA</td><td>: {data['Nama']}</td></tr>
-<tr><td>NO. POLISI</td><td>: {data['No Polisi']}</td></tr>
-<tr><td>BERAT</td><td>: {data['Berat']} KG</td></tr>
-<tr><td>TARIF</td><td>: {data['Tarif']}</td></tr>
+<table style="width:100%;font-size:11px;">
+<tr><td>Check-in</td><td>: {data['Waktu Check-In']}</td></tr>
+<tr><td>No Tiket</td><td>: {data['No Tiket']}</td></tr>
+<tr><td>Nama</td><td>: {data['Nama']}</td></tr>
+<tr><td>Nopol</td><td>: {data['No Polisi']}</td></tr>
+<tr><td>Berat</td><td>: {data['Berat']} KG</td></tr>
+<tr><td>Tarif</td><td>: {data['Tarif']}</td></tr>
 </table>
+
+<hr style="border-top:1px dashed #000;margin:6px 0;">
+
+<div style="font-size:9px;">
+- Tunjukkan saat naik kapal<br>
+- Tutup 15 menit sebelum berangkat<br>
+- Termasuk asuransi<br>
+- Tidak bisa dibatalkan
 </div>
 
-<div style="font-size: 11px; line-height: 1.4;">
-<b>Keterangan :</b><br>
-- Tunjukkan boarding pass saat naik kapal,<br>
-- Waktu yang tertera adalah waktu pelabuhan setempat<br>
-- Pintu rampdoor kapal akan ditutup 15 menit sebelum keberangkatan<br>
-- Harga tiket sudah termasuk asuransi;<br>
-- Tiket tidak dapat dibatalkan;
+<hr style="border-top:1px dashed #000;margin:6px 0;">
+
+<div style="text-align:center;font-size:9px;">
+Call Center: (021) 191<br>
+www.ferizy.com
 </div>
 
-<hr style="border: none; border-top: 1px dashed #333; margin: 15px 0;">
-
-<div style="text-align: center; font-size: 11px; line-height: 1.5; font-family: sans-serif;">
-Butuh Informasi Lebih Lanjut? Hubungi Call Center ASDP Di :<br>
-&#128222; (021) - 191 &nbsp;&nbsp; &#128241; 0811 1021 191 &nbsp;&nbsp; &#9993; cs@asdp.id<br>
-<b style="font-size: 13px;">www.ferizy.com</b>
 </div>
 
-<hr style="border: none; border-top: 1px dashed #333; margin: 15px 0;">
-
-<div style="text-align: center; font-size: 9px; line-height: 1.3; color: #555;">
-<b>PT ASDP Indonesia Ferry (Persero)</b><br>
-Jl. Jend. Ahmad Yani Kav 52 A, Cempaka Putih Timur<br>
-Kota Jakarta Pusat, 10510<br>
-NPWP: 01.061.041.8-093.000<br>
 <br>
-reg2-2 - (02001077) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expired : 04-05-2026 22:14:54
-</div>
-</div>
+
+<button onclick="downloadImage()" style="padding:6px 10px;font-size:12px;">
+📥 Download PNG
+</button>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script>
+function downloadImage() {{
+    const ticket = document.getElementById("ticket");
+    html2canvas(ticket).then(canvas => {{
+        const link = document.createElement('a');
+        link.download = 'boarding_pass.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }});
+}}
+</script>
 """
-    st.markdown(html_template, unsafe_allow_html=True)
+    st.components.v1.html(html_template, height=520)
     
 st.title("⛴️ Generator Boarding Pass Ferizy")
 
