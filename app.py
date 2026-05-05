@@ -30,11 +30,11 @@ Reg3.3 - (02002078)<br>
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
 
-<div style="text-align:center; line-height:1.1;">
-    <div style="font-weight:900; font-size:15px; letter-spacing:1px;">
+<div style="text-align:center; line-height:1;">
+    <div style="font-weight:900; font-size:20px; letter-spacing:1px;">
         BOARDING PASS
     </div>
-    <div style="font-weight:900; font-size:13px;">
+    <div style="font-weight:900; font-size:15px;">
         Untuk Kendaraan
     </div>
 </div>
