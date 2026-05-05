@@ -52,8 +52,6 @@ Silakan cek informasi dermaga di pelabuhan dan ikuti arahan petugas untuk menuju
 </table>
 </div>
 
-<br>
-
 <div style="font-size: 11px; line-height: 1.4;">
 <b>Keterangan :</b><br>
 - Tunjukkan boarding pass saat naik kapal,<br>
