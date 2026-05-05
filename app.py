@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import pdfkit
+from weasyprint import HTML, CSS
 
 st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered")
 
@@ -86,22 +86,14 @@ reg2-2 - (02001077) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; expired : 0
 """
 
 def generate_pdf_bytes(html_content):
-    """Fungsi pembantu untuk memproses konversi HTML ke PDF dengan format A6"""
-    # Pengaturan untuk ukuran A6 
-    options = {
-        'page-size': 'A6',
-        'margin-top': '5mm',
-        'margin-right': '5mm',
-        'margin-bottom': '5mm',
-        'margin-left': '5mm',
-        'encoding': "UTF-8",
-        'disable-smart-shrinking': ''
-    }
+    """Fungsi mengonversi HTML ke PDF ukuran A6 menggunakan WeasyPrint"""
     try:
-        pdf = pdfkit.from_string(html_content, False, options=options)
-        return pdf
-    except OSError as e:
-        st.error("Error: Konverter PDF tidak ditemukan. Pastikan file 'packages.txt' sudah ada di repositori.")
+        # Menambahkan aturan CSS khusus untuk ukuran kertas A6
+        page_css = CSS(string='@page { size: A6; margin: 5mm; }')
+        pdf_bytes = HTML(string=html_content).write_pdf(stylesheets=[page_css])
+        return pdf_bytes
+    except Exception as e:
+        st.error(f"Error saat membuat PDF: {e}")
         return None
 
 st.title("⛴️ Generator Boarding Pass Ferizy")
@@ -140,15 +132,11 @@ with tab1:
             "No Polisi": nopol.upper(), "Berat": berat, "Tarif": tarif
         }
         
-        # Ambil string HTML dari template
         html_str = get_html_template(data)
-        
-        # Tampilkan preview HTML di layar
         st.success("Boarding Pass Berhasil Dibuat!")
         st.markdown(html_str, unsafe_allow_html=True)
         
-        # Konversi dan buat tombol Download PDF
-        st.markdown("<br>", unsafe_allow_html=True) # Jarak spasi
+        st.markdown("<br>", unsafe_allow_html=True)
         pdf_bytes = generate_pdf_bytes(html_str)
         if pdf_bytes:
             st.download_button(
@@ -188,8 +176,6 @@ with tab2:
                     }
                     
                     html_str = get_html_template(data)
-                    
-                    # Bagi layout jadi 2 kolom: Kiri untuk Preview, Kanan untuk Tombol PDF
                     col_preview, col_btn = st.columns([3, 1])
                     
                     with col_preview:
@@ -199,7 +185,6 @@ with tab2:
                         st.write(f"**Data Baris ke-{index+1}**")
                         pdf_bytes = generate_pdf_bytes(html_str)
                         if pdf_bytes:
-                            # Gunakan key dinamis (key=index) agar tombol download bisa di-loop 
                             st.download_button(
                                 label="📥 Download PDF",
                                 data=pdf_bytes,
@@ -208,7 +193,7 @@ with tab2:
                                 key=f"download_btn_{index}"
                             )
                             
-                    st.markdown("---") # Garis pemisah antar struk
+                    st.markdown("---")
                     
         except Exception as e:
             st.error(f"Terjadi kesalahan saat membaca file: {e}")
