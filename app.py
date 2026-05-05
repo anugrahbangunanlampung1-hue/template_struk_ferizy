@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
+import base64
 
 st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered")
 
 def render_boarding_pass(data):
+    with open("logo_ferizy.png", "rb") as img:
+        logo_base64 = base64.b64encode(img.read()).decode()
+        
     html_template = f"""
 <div id="ticket" style="
 width:300px;
@@ -22,7 +26,7 @@ Reg3.3 - (02002078)<br>
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
 <div>
-<img src="logo_ferizy.png" 
+<img src="data:image/png;base64,{logo_base64}" width="85" style="filter: grayscale(100%);"> 
 width="85" style="filter: grayscale(100%);">
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
