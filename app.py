@@ -5,75 +5,95 @@ st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered
 
 def render_boarding_pass(data):
     html_template = f"""
-<div id="ticket" style="width:280px;padding:12px;margin:auto;
-font-family:monospace;background:#fff;color:#000;
-font-size:12px;line-height:1.2;letter-spacing:0.3px;">
+<div id="ticket" style="
+width:300px;
+padding:12px;
+font-family:monospace;
+background:#fff;
+color:#000;
+font-size:12px;
+line-height:1.25;
+">
 
-<div style="display:flex;justify-content:space-between;align-items:center;">
-<div style="font-weight:bold;font-size:16px;">ferizy</div>
-<div style="text-align:center;font-size:10px;">
-<b>BOARDING PASS</b><br>Untuk Pengguna Jasa
-</div>
-<div style="font-size:18px;font-weight:bold;">B</div>
-</div>
-
-<hr style="border-top:1px dashed #000;margin:6px 0;">
-
-<div style="display:flex;justify-content:space-between;">
-<div>ASAL<br><b>{data['Asal']}</b></div>
-<div>→</div>
-<div style="text-align:right;">TUJUAN<br><b>{data['Tujuan']}</b></div>
+<div style="font-size:10px;">
+Reg3.3 - (02002078)<br>
+{data['Waktu Check-In']}
 </div>
 
-<hr style="border-top:1px dashed #000;margin:6px 0;">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:5px;">
+<div>
+<div style="font-size:18px;font-weight:bold;">ferizy</div>
+<div style="font-size:10px;">Naik Ferry, Easy!</div>
+</div>
 
-<table style="width:100%;text-align:center;font-size:11px;">
-<tr>
-<td>Kelas<br><b>{data['Kelas Layanan']}</b></td>
-<td>Gol<br><b>{data['Golongan']}</b></td>
-<td>PNP<br><b>{data['Total PNP']}</b></td>
-<td>Derm<br><b>{data['Dermaga']}</b></td>
-</tr>
-</table>
+<div style="text-align:center;">
+<div style="font-weight:bold;">BOARDING PASS</div>
+<div style="font-size:11px;">Untuk Kendaraan</div>
+</div>
 
-<div style="font-size:9px;text-align:center;margin:4px 0;">
-Cek info dermaga di pelabuhan
+<div style="font-size:20px;font-weight:bold;">B</div>
 </div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<table style="width:100%;font-size:11px;">
-<tr><td>Check-in</td><td>: {data['Waktu Check-In']}</td></tr>
-<tr><td>No Tiket</td><td>: {data['No Tiket']}</td></tr>
-<tr><td>Nama</td><td>: {data['Nama']}</td></tr>
-<tr><td>Nopol</td><td>: {data['No Polisi']}</td></tr>
-<tr><td>Berat</td><td>: {data['Berat']} KG</td></tr>
-<tr><td>Tarif</td><td>: {data['Tarif']}</td></tr>
-</table>
+<div>
+<div><b>Keberangkatan REG</b></div>
+<div>{data['Asal']} - {data['Tujuan']}</div>
+<div>Reguler {data['Waktu Check-In'][:10]}</div>
+</div>
+
+<div style="margin-top:6px;">
+<div>BERLAKU : {data['Waktu Check-In']}</div>
+<div>KD. BOOKING : {data['No Tiket'][:8]}</div>
+<div>NO. TIKET : {data['No Tiket']}</div>
+<div>NAMA : {data['Nama']}</div>
+<div>NO. POLISI : {data['No Polisi']}</div>
+<div>GOLONGAN : {data['Golongan']}</div>
+<div>BERAT : {data['Berat']} KG</div>
+<div>TARIF : {data['Tarif']}</div>
+</div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="font-size:9px;">
-- Tunjukkan saat naik kapal<br>
-- Tutup 15 menit sebelum berangkat<br>
-- Termasuk asuransi<br>
-- Tidak bisa dibatalkan
+<div style="font-size:11px;">
+<b>Keterangan :</b><br>
+- Tunjukan boarding pass saat naik kapal<br>
+- Waktu tertera adalah waktu pelabuhan setempat<br>
+- Pintu kapal ditutup 30 menit sebelum keberangkatan<br>
+- Harga tiket sudah termasuk asuransi<br>
+- Tiket tidak dapat dibatalkan
+</div>
+
+<hr style="border-top:1px dashed #000;margin:6px 0;">
+
+<div style="font-size:11px;">
+Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
+</div>
+
+<div style="display:flex;justify-content:space-between;font-size:11px;margin-top:5px;">
+<div>📞 (021)-191</div>
+<div>📱 0811 1021 191</div>
+<div>✉ cs@asdp.id</div>
+</div>
+
+<div style="text-align:center;margin-top:5px;font-weight:bold;">
+www.ferizy.com
 </div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="text-align:center;font-size:9px;">
-Call Center: (021) 191<br>
-www.ferizy.com
+PT. ASDP Indonesia Ferry (Persero)<br>
+Jl. Jend. Ahmad Yani Kav 52 A, Cempaka Putih Timur<br>
+Kota Jakarta Pusat, 10510<br>
+NPWP : 01.061.041.8-093.000
 </div>
 
 </div>
 
 <br>
 
-<button onclick="downloadImage()" style="padding:6px 10px;font-size:12px;">
-📥 Download PNG
-</button>
+<button onclick="downloadImage()">📥 Download PNG</button>
 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
@@ -83,13 +103,13 @@ function downloadImage() {{
     html2canvas(ticket).then(canvas => {{
         const link = document.createElement('a');
         link.download = 'boarding_pass.png';
-        link.href = canvas.toDataURL('image/png');
+        link.href = canvas.toDataURL();
         link.click();
     }});
 }}
 </script>
 """
-    st.components.v1.html(html_template, height=520)
+    st.components.v1.html(html_template, height=650)
     
 st.title("⛴️ Generator Boarding Pass Ferizy")
 
