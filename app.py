@@ -22,7 +22,7 @@ Reg3.3 - (02002078)<br>
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
 <div>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Ferizy_logo.png/320px-Ferizy_logo.png" 
+<img src="logo_ferizy.png" 
 width="85" style="filter: grayscale(100%);">
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
