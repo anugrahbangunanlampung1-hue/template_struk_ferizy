@@ -19,7 +19,7 @@ font-size:12px;
 line-height:1.35;
 ">
 
-<div style="font-size:10px;">
+<div style="font-size:10px;font-style: italic;">
 Reg3.3 - (02002078)<br>
 {data['Waktu Check-In']}
 </div>
