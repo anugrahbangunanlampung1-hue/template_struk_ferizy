@@ -26,8 +26,7 @@ Reg3.3 - (02002078)<br>
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
 <div>
-<img src="data:image/png;base64,{logo_base64}" width="85" style="filter: grayscale(100%);"> 
-width="85" style="filter: grayscale(100%);">
+<img src="data:image/png;base64,{logo_base64}" style="width:80px; filter: grayscale(100%); display:block;">
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
 
