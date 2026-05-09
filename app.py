@@ -20,7 +20,7 @@ def render_boarding_pass(data):
         
     html_template = f"""
 <div id="ticket" style="
-width:310px;
+width:315px;
 padding:12px;
 font-family:monospace;
 background:#fff;
