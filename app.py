@@ -1,12 +1,22 @@
 import streamlit as st
 import pandas as pd
 import base64
+from datetime import datetime, timedelta
 
 st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered")
 
 def render_boarding_pass(data):
     with open("logo_ferizy.png", "rb") as img:
         logo_base64 = base64.b64encode(img.read()).decode()
+        
+    # Menambahkan 1 hari untuk waktu BERLAKU
+    try:
+        checkin_dt = datetime.strptime(data['Waktu Check-In'], "%d-%m-%Y %H:%M:%S")
+        berlaku_dt = checkin_dt + timedelta(days=1)
+        waktu_berlaku = berlaku_dt.strftime("%d-%m-%Y %H:%M:%S")
+    except Exception:
+        # Fallback jika format waktu tidak sesuai standar
+        waktu_berlaku = data['Waktu Check-In']
         
     html_template = f"""
 <div id="ticket" style="
@@ -53,16 +63,16 @@ B
 <div>
 <div style="font-weight:bold;">Keberangkatan REG</div>
 <div>{data['Asal']} - {data['Tujuan']}</div>
-<div>Reguler {data['Waktu Check-In'][:10]}</div>
+<div>Reguler {data['Waktu Check-In'].split(' ')[0]}</div>
 </div>
 
-<br>
+<hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <table style="width:100%;font-size:12px;border-collapse:collapse;">
 <tr>
 <td style="width:40%;">BERLAKU</td>
 <td style="width:5%;text-align:center;">:</td>
-<td>{data['Waktu Check-In']}</td>
+<td>{waktu_berlaku}</td>
 </tr>
 <tr>
 <td>KD. BOOKING</td>
@@ -105,11 +115,13 @@ B
 
 <div style="font-size:11px;">
 <b>Keterangan :</b><br>
+<div style="padding-left:10px; text-indent:-10px;">
 - Tunjukan boarding pass saat naik kapal<br>
 - Waktu tertera adalah waktu pelabuhan setempat<br>
 - Pintu kapal ditutup 30 menit sebelum keberangkatan<br>
 - Harga tiket sudah termasuk asuransi<br>
 - Tiket tidak dapat dibatalkan
+</div>
 </div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
