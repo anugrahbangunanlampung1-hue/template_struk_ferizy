@@ -56,8 +56,6 @@ B
 <div>Reguler {data['Waktu Check-In'][:10]}</div>
 </div>
 
-<hr style="border-top:1px dashed #000;margin:6px 0;">
-
 <table style="width:100%;font-size:12px;border-collapse:collapse;">
 <tr>
 <td style="width:40%;">BERLAKU</td>
