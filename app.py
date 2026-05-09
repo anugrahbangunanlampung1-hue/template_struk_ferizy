@@ -36,7 +36,7 @@ Reg3.3 - (02002078)<br>
 
 <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
 <div>
-<img src="data:image/png;base64,{logo_base64}" style="width:80px; filter: grayscale(100%); display:block;">
+<img src="data:image/png;base64,{logo_base64}" style="width:80px; filter: grayscale(100%); -webkit-filter: grayscale(100%); display:block;">
 <div style="font-size:10px;">Naik Ferry, Easy!</div>
 </div>
 
@@ -60,13 +60,13 @@ B
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div>
+<div style="margin-bottom: 12px;">
 <div style="font-weight:bold;">Keberangkatan REG</div>
 <div>{data['Asal']} - {data['Tujuan']}</div>
 <div>Reguler {data['Waktu Check-In'].split(' ')[0]}</div>
 </div>
 
-<hr style="border-top:1px dashed #000;margin:6px 0;">
+<!-- Garis HR dihapus dan diganti margin-bottom pada div di atas -->
 
 <table style="width:100%;font-size:12px;border-collapse:collapse;">
 <tr>
@@ -114,14 +114,14 @@ B
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="font-size:11px;">
-<b>Keterangan :</b><br>
-<div style="padding-left:10px; text-indent:-10px;">
-- Tunjukan boarding pass saat naik kapal<br>
-- Waktu tertera adalah waktu pelabuhan setempat<br>
-- Pintu kapal ditutup 30 menit sebelum keberangkatan<br>
-- Harga tiket sudah termasuk asuransi<br>
-- Tiket tidak dapat dibatalkan
-</div>
+<b>Keterangan :</b>
+<table style="width:100%; font-size:11px; border-collapse:collapse; margin-top:2px;">
+<tr><td style="vertical-align:top; width:10px;">-</td><td>Tunjukan boarding pass saat naik kapal</td></tr>
+<tr><td style="vertical-align:top;">-</td><td>Waktu tertera adalah waktu pelabuhan setempat</td></tr>
+<tr><td style="vertical-align:top;">-</td><td>Pintu kapal ditutup 30 menit sebelum keberangkatan</td></tr>
+<tr><td style="vertical-align:top;">-</td><td>Harga tiket sudah termasuk asuransi</td></tr>
+<tr><td style="vertical-align:top;">-</td><td>Tiket tidak dapat dibatalkan</td></tr>
+</table>
 </div>
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
