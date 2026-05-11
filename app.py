@@ -109,9 +109,9 @@ B
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="font-size:12px;">
+<div style="font-size:13px;">
 <b>Keterangan :</b>
-<table style="width:100%; font-size:11px; border-collapse:collapse; margin-top:2px;">
+<table style="width:100%; font-size:12px; border-collapse:collapse; line-height:1.2;">
 <tr><td style="vertical-align:top; width:10px;">-</td><td>Tunjukan boarding pass saat naik kapal</td></tr>
 <tr><td style="vertical-align:top;">-</td><td>Waktu tertera adalah waktu pelabuhan setempat</td></tr>
 <tr><td style="vertical-align:top;">-</td><td>Pintu kapal ditutup 30 menit sebelum keberangkatan</td></tr>
@@ -123,16 +123,16 @@ B
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="font-size:11px;">
-Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di
+Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
 </div>
 
-<div style="display:flex;justify-content:space-between;font-size:15px;margin-top:5px;">
-<div>📞 (021)-191</div>
-<div>📱 0811 1021 191</div>
-<div>✉ cs@asdp.id</div>
+<div style="display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:bold; margin-top:8px; filter: grayscale(100%); -webkit-filter: grayscale(100%);">
+<div style="display:flex; align-items:center;">📞 <span style="margin-left:2px;">(021)-191</span></div>
+<div style="display:flex; align-items:center;">💬 <span style="margin-left:2px;">0811 1021 191</span></div>
+<div style="display:flex; align-items:center;">✉ <span style="margin-left:2px;">cs@asdp.id</span></div>
 </div>
 
-<div style="text-align:center;margin-top:10px;font-weight:bold;">
+<div style="text-align:center; margin-top:12px; font-weight:900; font-size:18px; letter-spacing:0.5px;">
 www.ferizy.com
 </div>
 
