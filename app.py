@@ -128,7 +128,12 @@ Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
 
 <div style="display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:bold; filter: grayscale(100%); -webkit-filter: grayscale(100%);">
   <div style="display:flex; align-items:center;">📞 <span style="margin-left:2px;">(021)-191</span></div>
-  <div style="display:flex; align-items:center;">💬 <span style="margin-left:2px;">0811 1021 191</span></div>
+  <div style="display:flex; align-items:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="14" height="14" fill="#000" style="margin-right:4px;">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 414.8c-32 0-63.3-8.6-90.8-24.9l-6.5-3.8-67.4 17.7 18-65.7-4.2-6.7c-17.8-28.5-27.2-61.5-27.2-95.3 0-103.8 84.5-188.3 188.4-188.3 50.3 0 97.6 19.6 133.2 55.2 35.6 35.6 55.2 82.9 55.2 133.2 0 103.8-84.5 188.3-188.4 188.3zm103.2-141.5c-5.7-2.8-33.6-16.6-38.8-18.5-5.2-1.9-9-2.8-12.8 2.8-3.8 5.7-14.7 18.5-18 22.3-3.3 3.8-6.6 4.3-12.3 1.4-5.7-2.8-24-8.8-45.7-28.1-16.9-15.1-28.3-33.8-31.1-39.5-2.8-5.7-.3-8.8 2.6-11.6 2.6-2.6 5.7-6.6 8.5-9.9 2.8-3.3 3.8-5.7 5.7-9.5 1.9-3.8.9-7.1-.5-9.9-1.4-2.8-12.8-30.8-17.5-42.2-4.6-11.1-9.3-9.6-12.8-9.8-3.3-.2-7.1-.2-10.9-.2-3.8 0-10 1.4-15.2 7.1-5.2 5.7-19.9 19.4-19.9 47.4 0 28 20.4 55 23.2 58.8 2.8 3.8 40.1 61.2 97.1 85.5 13.6 5.8 24.2 9.2 32.5 11.8 13.6 4.3 26 3.7 35.8 2.2 10.9-1.6 33.6-13.7 38.4-27 4.7-13.3 4.7-24.6 3.3-27-.8-2.6-4.6-4.5-10.3-7.4z"/>
+    </svg>
+    <span>0811 1021 191</span>
+</div>
   <div style="display:flex; align-items:center;">✉ <span style="margin-left:2px;">cs@asdp.id</span></div>
 </div>
 
