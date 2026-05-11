@@ -56,17 +56,13 @@ line-height:1;
 ">
 B
 </div>
-</div> <!-- INI ADALAH TAG PENUTUP DIV YANG DITAMBAHKAN -->
-
-<hr style="border-top:1px dashed #000;margin:6px 0;">
+</div> <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="margin-bottom: 12px;">
 <div style="font-weight:bold;">Keberangkatan REG</div>
 <div>{data['Asal']} - {data['Tujuan']}</div>
 <div>Reguler {data['Waktu Check-In'].split(' ')[0]}</div>
 </div>
-
-<!-- Garis HR dihapus dan diganti margin-bottom pada div di atas -->
 
 <table style="width:100%;font-size:12px;border-collapse:collapse;">
 <tr>
@@ -102,7 +98,7 @@ B
 <tr>
 <td>BERAT</td>
 <td style="text-align:center;">:</td>
-<td>{float(data['Berat']):.2f} KG</td>
+<td>{data['Berat']} KG</td>
 </tr>
 <tr>
 <td>TARIF</td>
@@ -200,11 +196,14 @@ with tab1:
         submit = st.form_submit_button("Generate Boarding Pass")
         
     if submit:
+        # Pengecekan agar integer tidak pakai koma dua digit di belakang
+        berat_str = f"{int(berat)}" if float(berat).is_integer() else f"{berat:.2f}"
+        
         data = {
             "Asal": asal.upper(), "Tujuan": tujuan.upper(), "Kelas Layanan": kelas.upper(),
             "Golongan": golongan.upper(), "Total PNP": pnp, "Dermaga": dermaga.upper(),
             "Waktu Check-In": waktu, "No Tiket": no_tiket.upper(), "Nama": nama.upper(),
-            "No Polisi": nopol.upper(), "Berat": berat, "Tarif": tarif
+            "No Polisi": nopol.upper(), "Berat": berat_str, "Tarif": tarif
         }
         st.success("Boarding Pass Berhasil Dibuat!")
         render_boarding_pass(data)
@@ -214,17 +213,59 @@ with tab2:
     st.subheader("Generate Massal via Excel")
     st.info("Upload file Excel dengan format kolom yang sesuai dengan template.")
     
-    uploaded_file = st.file_uploader("Upload file Excel (.xlsx)", type=["xlsx"])
+    uploaded_file = st.file_uploader("Upload file Excel (.xlsx, .csv)", type=["xlsx", "csv"])
     
     if uploaded_file is not None:
         try:
-            df = pd.read_excel(uploaded_file)
+            if uploaded_file.name.endswith('.csv'):
+                df = pd.read_csv(uploaded_file)
+            else:
+                df = pd.read_excel(uploaded_file)
+            
             st.success(f"Berhasil membaca {len(df)} data!")
             
             # Button untuk merender semua tiket di dalam excel
             if st.button("Tampilkan Semua Boarding Pass"):
                 for index, row in df.iterrows():
-                    # Mengamankan data dari null value
+                    
+                    # 1. Parsing & Standarisasi Waktu (Untuk hitung BERLAKU H+1)
+                    raw_waktu = row.get("Waktu Check-In")
+                    if pd.isna(raw_waktu):
+                        waktu_str = "03-05-2026 22:14:54"
+                    else:
+                        try:
+                            # Memaksa pandas baca dengan dayfirst karena format tanggal ID
+                            parsed_dt = pd.to_datetime(raw_waktu, dayfirst=True)
+                            waktu_str = parsed_dt.strftime("%d-%m-%Y %H:%M:%S")
+                        except:
+                            waktu_str = str(raw_waktu)
+                            
+                    # 2. Parsing & Standarisasi Berat (Agar 30.0 jadi 30)
+                    raw_berat = row.get("Berat")
+                    if pd.isna(raw_berat):
+                        berat_str = "0"
+                    else:
+                        try:
+                            num_berat = float(raw_berat)
+                            berat_str = f"{int(num_berat)}" if num_berat.is_integer() else f"{num_berat:.2f}"
+                        except:
+                            berat_str = str(raw_berat)
+                            
+                    # 3. Parsing & Standarisasi Tarif (Format Ribuan Rp)
+                    raw_tarif = row.get("Tarif")
+                    if pd.isna(raw_tarif):
+                        tarif_str = "Rp0"
+                    else:
+                        try:
+                            if isinstance(raw_tarif, str) and "Rp" in raw_tarif:
+                                tarif_str = raw_tarif
+                            else:
+                                num_tarif = int(float(raw_tarif))
+                                tarif_str = f"Rp{num_tarif:,}".replace(",", ".")
+                        except:
+                            tarif_str = str(raw_tarif)
+                    
+                    # Mengamankan data ke dalam dictionary
                     data = {
                         "Asal": str(row.get("Asal", "MERAK")).upper(),
                         "Tujuan": str(row.get("Tujuan", "BAKAUHENI")).upper(),
@@ -232,12 +273,12 @@ with tab2:
                         "Golongan": str(row.get("Golongan", "VIB")).upper(),
                         "Total PNP": row.get("Total PNP", 1),
                         "Dermaga": str(row.get("Dermaga", "II")).upper(),
-                        "Waktu Check-In": str(row.get("Waktu Check-In", "03-05-2026 22:14:54")),
+                        "Waktu Check-In": waktu_str,
                         "No Tiket": str(row.get("No Tiket", "-")).upper(),
                         "Nama": str(row.get("Nama", "-")).upper(),
                         "No Polisi": str(row.get("No Polisi", "-")).upper(),
-                        "Berat": row.get("Berat", 0),
-                        "Tarif": str(row.get("Tarif", "Rp0"))
+                        "Berat": berat_str,
+                        "Tarif": tarif_str
                     }
                     render_boarding_pass(data)
                     st.markdown("---") # Pemisah antar struk
