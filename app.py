@@ -73,7 +73,7 @@ B
 <tr>
 <td>KD. BOOKING</td>
 <td style="text-align:center;">:</td>
-<td>{data['No Tiket'][:8]}</td>
+<td>{data['No Tiket'][2:]}</td>
 </tr>
 <tr>
 <td>NO. TIKET</td>
