@@ -20,7 +20,7 @@ def render_boarding_pass(data):
         
     html_template = f"""
 <div id="ticket" style="
-width:320px;
+width:350px;
 padding:12px;
 font-family:monospace;
 background:#fff;
@@ -126,13 +126,13 @@ B
 Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
 </div>
 
-<div style="display:flex;justify-content:space-between;font-size:11px;margin-top:5px;">
+<div style="display:flex;justify-content:space-between;font-size:15px;margin-top:5px;">
 <div>📞 (021)-191</div>
 <div>📱 0811 1021 191</div>
 <div>✉ cs@asdp.id</div>
 </div>
 
-<div style="text-align:center;margin-top:6px;font-weight:bold;">
+<div style="text-align:center;margin-top:10px;font-weight:bold;">
 www.ferizy.com
 </div>
 
