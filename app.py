@@ -122,17 +122,17 @@ B
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="font-size:11px;">
+<div style="font-size:11px; margin-bottom:10px;">
 Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
 </div>
 
-<div style="display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:bold; margin-top:8px; filter: grayscale(100%); -webkit-filter: grayscale(100%);">
-<div style="display:flex; align-items:center;">📞 <span style="margin-left:2px;">(021)-191</span></div>
-<div style="display:flex; align-items:center;">💬 <span style="margin-left:2px;">0811 1021 191</span></div>
-<div style="display:flex; align-items:center;">✉ <span style="margin-left:2px;">cs@asdp.id</span></div>
+<div style="display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:bold; filter: grayscale(100%); -webkit-filter: grayscale(100%);">
+  <div style="display:flex; align-items:center;">📞 <span style="margin-left:2px;">(021)-191</span></div>
+  <div style="display:flex; align-items:center;">💬 <span style="margin-left:2px;">0811 1021 191</span></div>
+  <div style="display:flex; align-items:center;">✉ <span style="margin-left:2px;">cs@asdp.id</span></div>
 </div>
 
-<div style="text-align:center; margin-top:12px; font-weight:900; font-size:18px;">
+<div style="text-align:center; margin-top:4px; font-weight:900; font-size:18px;">
 www.ferizy.com
 </div>
 
