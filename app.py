@@ -109,7 +109,7 @@ B
 
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
-<div style="font-size:11px;">
+<div style="font-size:12px;">
 <b>Keterangan :</b>
 <table style="width:100%; font-size:11px; border-collapse:collapse; margin-top:2px;">
 <tr><td style="vertical-align:top; width:10px;">-</td><td>Tunjukan boarding pass saat naik kapal</td></tr>
@@ -123,7 +123,7 @@ B
 <hr style="border-top:1px dashed #000;margin:6px 0;">
 
 <div style="font-size:11px;">
-Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
+Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di
 </div>
 
 <div style="display:flex;justify-content:space-between;font-size:15px;margin-top:5px;">
