@@ -93,7 +93,7 @@ B
 <tr>
 <td>GOLONGAN</td>
 <td style="text-align:center;">:</td>
-<td>{data['Golongan']}</td>
+<td>GOLONGAN {data['Golongan']}</td>
 </tr>
 <tr>
 <td>BERAT</td>
