@@ -102,7 +102,7 @@ B
 <tr>
 <td>BERAT</td>
 <td style="text-align:center;">:</td>
-<td>{data['Berat']} KG</td>
+<td>{float(data['Berat']):.2f} KG</td>
 </tr>
 <tr>
 <td>TARIF</td>
@@ -187,7 +187,7 @@ with tab1:
             pnp = st.number_input("Total PNP", min_value=1, value=1)
             waktu = st.text_input("Waktu Check-In", value="03-05-2026 22:14:54")
             nama = st.text_input("Nama", value="WARSITO")
-            berat = st.number_input("Berat (KG)", min_value=0, value=348)
+            berat = st.number_input( "Berat (KG)",min_value=0.0, value=38.50,step=0.01, format="%.2f" )
         
         with col2:
             tujuan = st.text_input("Tujuan", value="BAKAUHENI")
