@@ -132,7 +132,7 @@ Butuh informasi lebih lanjut ? Hubungi Call Center ASDP Di :
 <div style="display:flex; align-items:center;">✉ <span style="margin-left:2px;">cs@asdp.id</span></div>
 </div>
 
-<div style="text-align:center; margin-top:12px; font-weight:900; font-size:18px; letter-spacing:0.1px;">
+<div style="text-align:center; margin-top:12px; font-weight:900; font-size:18px;">
 www.ferizy.com
 </div>
 
