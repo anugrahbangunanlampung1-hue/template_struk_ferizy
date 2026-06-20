@@ -230,7 +230,7 @@ with tab2:
                     else:
                         try:
                             num_berat = float(raw_berat)
-                            berat_str = f"{int(num_berat)}" if num_berat.is_integer() else f"{num_berat:.3f}"
+                            berat_str = f"{int(num_berat)}" if num_berat.is_integer() else f"{num_berat:.2f}"
                         except:
                             berat_str = str(raw_berat)
                             
