@@ -137,7 +137,7 @@ def render_boarding_pass(data):
 
     <hr style="border-top:1px dashed #000; margin:12px 0;">
 
-    <div style="text-align: center; font-size: 9px; line-height: 1.4; color: #555;">
+    <div style="text-align: center; font-size: 9px; line-height: 1.2; color: #555;">
         <b style="color:#000;">PT ASDP Indonesia Ferry (Persero)</b><br>
         Jl. Jend. Ahmad Yani Kav 52 A, Cempaka Putih Timur<br>
         Kota Jakarta Pusat, 10510<br>
