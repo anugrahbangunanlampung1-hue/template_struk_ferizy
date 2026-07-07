@@ -109,9 +109,9 @@ def render_boarding_pass(data):
         </table>
     </div>
 
-    <hr style="border-top:1px dashed #000; margin:12px 0;">
+    <hr style="border-top:1px dashed #000; margin:6px 0;">
 
-    <div style="font-size: 10px; line-height: 1.5; color: #444;">
+    <div style="font-size: 10px; line-height: 1.2; color: #444;">
         <b style="color: #000;">Keterangan :</b><br>
         - Tunjukkan boarding pass saat naik kapal;<br>
         - Waktu yang tertera adalah waktu pelabuhan setempat<br>
@@ -120,7 +120,7 @@ def render_boarding_pass(data):
         - Tiket tidak dapat dibatalkan;
     </div>
 
-    <hr style="border-top:1px dashed #000; margin:12px 0;">
+    <hr style="border-top:1px dashed #000; margin:6px 0;">
 
     <div style="text-align: center; font-size: 11px;">
         Butuh Informasi Lebih Lanjut? Hubungi Call Center ASDP Di :<br>
@@ -132,10 +132,10 @@ def render_boarding_pass(data):
             </div>
             <div style="display:flex; align-items:center;">&#9993; cs@asdp.id</div>
         </div>
-        <div style="margin-top: 8px; font-size: 15px; font-weight: 900; letter-spacing: 0.5px;">www.ferizy.com</div>
+        <div style="margin-top: 4px; font-size: 15px; font-weight: 900; letter-spacing: 0.5px;">www.ferizy.com</div>
     </div>
 
-    <hr style="border-top:1px dashed #000; margin:12px 0;">
+    <hr style="border-top:1px dashed #000; margin:6px 0;">
 
     <div style="text-align: center; font-size: 9px; line-height: 1.2; color: #555;">
         <b style="color:#000;">PT ASDP Indonesia Ferry (Persero)</b><br>
