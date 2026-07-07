@@ -7,11 +7,21 @@ import os
 st.set_page_config(page_title="Generator Boarding Pass Ferizy", layout="centered")
 
 def render_boarding_pass(data):
-    # Menyiapkan logo dengan error handling jika file tidak ada
+    # 1. Menyiapkan logo dan icon dalam format Base64
     logo_base64 = ""
     if os.path.exists("logo_ferizy.png"):
         with open("logo_ferizy.png", "rb") as img:
             logo_base64 = base64.b64encode(img.read()).decode()
+            
+    cruise_ship_base64 = ""
+    if os.path.exists("cruise-ship.png"):
+        with open("cruise-ship.png", "rb") as img:
+            cruise_ship_base64 = base64.b64encode(img.read()).decode()
+            
+    ship_base64 = ""
+    if os.path.exists("ship.png"):
+        with open("ship.png", "rb") as img:
+            ship_base64 = base64.b64encode(img.read()).decode()
             
     # Menambahkan 1 hari untuk waktu BERLAKU
     try:
@@ -22,7 +32,7 @@ def render_boarding_pass(data):
         # Fallback jika format waktu tidak sesuai standar
         waktu_berlaku = data['Waktu Check-In']
         
-    # Menyesuaikan penulisan untuk Watermark belakang (Misal: "REGULER" -> "Reguler")
+    # Menyesuaikan penulisan untuk Watermark belakang
     watermark_text = str(data['Kelas Layanan']).capitalize()
 
     html_template = f"""
@@ -47,7 +57,7 @@ def render_boarding_pass(data):
             <b style="font-size:15px; letter-spacing: 0.5px;">{data['Asal']}</b>
         </div>
         <div style="width:20%; display:flex; align-items:center; justify-content:center;">
-            <img src="cruise-ship.png" style="width:26px; height:auto;">
+            {f'<img src="data:image/png;base64,{cruise_ship_base64}" style="width:26px; height:auto;">' if cruise_ship_base64 else '&#9973;'}
         </div>
         <div style="width:40%; text-align:center;">
             <div style="font-size:11px; color: #444; margin-bottom: 2px;">TUJUAN</div>
@@ -57,7 +67,7 @@ def render_boarding_pass(data):
 
     <div style="border: 1px solid #000; border-radius: 12px; padding: 6px 12px; margin-top: 15px; display: flex; justify-content: space-between; text-align: center; align-items: center; position: relative;">
         <div style="position: absolute; left: -10px; top: 10px; background: #fff; padding: 2px 4px;">
-            <img src="ship.png" style="width:16px; height:auto;">
+            {f'<img src="data:image/png;base64,{ship_base64}" style="width:16px; height:auto;">' if ship_base64 else '&#9973;'}
         </div>
         <div style="position: absolute; right: -10px; top: 10px; background: #fff; font-size: 16px; padding: 2px;">&#9784;</div>
         
@@ -174,8 +184,6 @@ with tab1:
             pnp = st.number_input("Total PNP", min_value=1, value=1)
             waktu = st.text_input("Waktu Check-In", value="03-07-2026 02:15:58")
             nama = st.text_input("Nama", value="RUDI")
-            
-            # Diganti menjadi text_input agar format titik (misal 29.980) tidak berubah saat diformat float
             berat = st.text_input("Berat (KG)", value="29.980") 
         
         with col2:
@@ -228,15 +236,13 @@ with tab2:
                         except:
                             waktu_str = str(raw_waktu)
                             
-                    # 2. Parsing Berat dari DataFrame (agar support 29.980)
+                    # 2. Parsing Berat
                     raw_berat = row.get("Berat")
                     if pd.isna(raw_berat):
                         berat_str = "0"
                     else:
-                        # Jika angka ribuan ke-detect otomatis sebagai float, paksa pakai formatting titik Indonesia
                         try:
                             if isinstance(raw_berat, float) or isinstance(raw_berat, int):
-                                # Asumsi >1000 itu ribuan utuh 29980 bukan 29.98 kg
                                 if raw_berat > 1000:
                                     berat_str = f"{int(raw_berat):,}".replace(",", ".")
                                 else:
@@ -260,7 +266,6 @@ with tab2:
                         except:
                             tarif_str = str(raw_tarif)
                     
-                    # Dictionary Payload Excel
                     data = {
                         "Asal": str(row.get("Asal", "MERAK")).upper(),
                         "Tujuan": str(row.get("Tujuan", "BAKAUHENI")).upper(),
