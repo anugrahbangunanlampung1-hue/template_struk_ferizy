@@ -46,8 +46,8 @@ def render_boarding_pass(data):
             <div style="font-size:11px; color: #444; margin-bottom: 2px;">ASAL</div>
             <b style="font-size:15px; letter-spacing: 0.5px;">{data['Asal']}</b>
         </div>
-        <div style="width:20%; font-size:22px; display:flex; align-items:center; justify-content:center;">
-            &#9973; 
+        <div style="width:20%; display:flex; align-items:center; justify-content:center;">
+            <img src="cruise-ship.png" style="width:26px; height:auto;">
         </div>
         <div style="width:40%; text-align:center;">
             <div style="font-size:11px; color: #444; margin-bottom: 2px;">TUJUAN</div>
@@ -56,7 +56,9 @@ def render_boarding_pass(data):
     </div>
 
     <div style="border: 1px solid #000; border-radius: 12px; padding: 6px 12px; margin-top: 15px; display: flex; justify-content: space-between; text-align: center; align-items: center; position: relative;">
-        <div style="position: absolute; left: -10px; top: 10px; background: #fff; font-size: 16px; padding: 2px;">&#9973;</div>
+        <div style="position: absolute; left: -10px; top: 10px; background: #fff; padding: 2px 4px;">
+            <img src="ship.png" style="width:16px; height:auto;">
+        </div>
         <div style="position: absolute; right: -10px; top: 10px; background: #fff; font-size: 16px; padding: 2px;">&#9784;</div>
         
         <div style="flex:1;">
@@ -145,7 +147,7 @@ def render_boarding_pass(data):
 <script>
 function downloadImage() {{
     const ticket = document.getElementById("ticket");
-    html2canvas(ticket, {{ scale: 3, backgroundColor: null }}).then(canvas => {{
+    html2canvas(ticket, {{ scale: 3, backgroundColor: null, useCORS: true }}).then(canvas => {{
         const link = document.createElement('a');
         link.download = 'boarding_pass.png';
         link.href = canvas.toDataURL("image/png");
